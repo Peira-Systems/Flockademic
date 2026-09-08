@@ -1,0 +1,80 @@
+# Production deployment compose file.
+#
+# Copy this to the deploy host as /opt/flockademic/docker-compose.yml (deploy
+# is manual — see docs/deployment.md). Unlike the root docker-compose.yml —
+# which BUILDS images from source for local prod-mode testing — this PULLS
+# pre-built images from a self-hosted container registry (served over HTTPS
+# with a publicly-trusted cert).
+#
+# The registry host is REGISTRY (required, no default here on purpose).
+# `export REGISTRY=<host>` before `docker compose` on the host (see
+# docs/deployment.md).
+#
+# One-time host setup before the first deploy — see docs/deployment.md:
+#   - /opt/flockademic/.env  with real POSTGRES_PASSWORD, SECRET_KEY_BASE,
+#     DOMAIN, ACME_EMAIL, CARTO_API_KEY (copy example.env).
+#   - Docker on the host able to resolve and reach the registry host over
+#     HTTPS (no insecure-registries entry needed).
+#   - The `caddy_data` volume persists Let's Encrypt certs across deploys — do
+#     not delete it or you'll re-hit ACME rate limits.
+
+services:
+  db:
+    image: postgis/postgis:17-3.5
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required — see example.env}
+      POSTGRES_DB: ${POSTGRES_DB:-flockademic_prod}
+    # Deliberately not published to the host (SEC-1) — the app reaches Postgres
+    # over the private compose network at db:5432.
+    volumes:
+      - ${POSTGRES_DATA_DIR:-./data/postgres}:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  app:
+    image: ${REGISTRY:?REGISTRY is required — export it before docker compose, see docs/deployment.md}/${APP_IMAGE:-flockademic}:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: ecto://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required — see example.env}@db:5432/${POSTGRES_DB:-flockademic_prod}
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE:?SECRET_KEY_BASE is required — see example.env}
+      PHX_HOST: ${DOMAIN:-localhost}
+      PORT: "4000"
+      POOL_SIZE: ${POOL_SIZE:-10}
+      CARTO_API_KEY: ${CARTO_API_KEY:-}
+      SCHEDULED_INGEST_ENABLED: ${SCHEDULED_INGEST_ENABLED:-false}
+      SCHEDULED_INGEST_INTERVAL_MS: ${SCHEDULED_INGEST_INTERVAL_MS:-86400000}
+    volumes:
+      - ${CAMERA_DATA_DIR:-./data/cameras}:/data/cameras:ro
+    # Not published to the host — only reachable through the caddy reverse proxy.
+
+  caddy:
+    # Stock caddy + the ratelimit module + the baked-in Caddyfile — built and
+    # pushed by CI from docker/caddy/Dockerfile. The registry only has the
+    # `flockademic` repo provisioned, so this image ships there too, under
+    # `caddy-`-prefixed tags (caddy-latest tracks the app's latest).
+    image: ${REGISTRY:?REGISTRY is required — export it before docker compose, see docs/deployment.md}/${APP_IMAGE:-flockademic}:caddy-${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    depends_on:
+      - app
+    environment:
+      DOMAIN: ${DOMAIN:-localhost}
+      ACME_EMAIL: ${ACME_EMAIL:-}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

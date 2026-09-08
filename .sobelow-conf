@@ -1,0 +1,16 @@
+# Sobelow config, read by `mix sobelow --config` (see the `precommit` alias).
+[
+  verbose: false,
+  private: false,
+  # Honour inline `# sobelow_skip [...]` annotations (e.g. the operator-only
+  # File.read in lib/flockademic/ingest/osm_extract.ex).
+  skip: true,
+  router: "lib/flockademic_web/router.ex",
+  exit: "low",
+  # Config.CSP: a Content-Security-Policy IS set — by the
+  # FlockademicWeb.Plugs.ContentSecurityPolicy plug in the :browser pipeline
+  # (it needs a per-request nonce, which put_secure_browser_headers can't
+  # express) — but sobelow only recognises the put_secure_browser_headers
+  # form, so it can't see it.
+  ignore: ["Config.CSP"]
+]

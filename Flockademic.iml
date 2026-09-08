@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="GENERAL_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/aws_signature" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/bandit" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/db_connection" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/decimal" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/dns_cluster" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/ecto" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/ecto_sql" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/esbuild" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/explorer" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/expo" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/file_system" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/finch" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/geo" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/geo_postgis" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/gettext" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/hpax" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/idna" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/jason" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/mime" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/mint" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/nimble_options" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/nimble_pool" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/phoenix" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/phoenix_ecto" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/phoenix_html" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/phoenix_live_dashboard" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/phoenix_live_reload" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/phoenix_live_view" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/phoenix_pubsub" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/phoenix_template" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/plug" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/plug_crypto" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/postgrex" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/req" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/rustler_precompiled" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/swoosh" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/table" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/table_rex" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/tailwind" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/telemetry" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/telemetry_metrics" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/telemetry_poller" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/thousand_island" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/websock" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/websock_adapter" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/aws_signature" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/bandit" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/cc_precompiler" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/db_connection" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/decimal" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/dns_cluster" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/ecto" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/ecto_sql" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/elixir_make" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/esbuild" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/explorer" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/expo" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/finch" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/fine" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/geo" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/geo_postgis" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/gettext" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/hpax" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/idna" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/jason" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/lazy_html" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/mime" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/mint" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/nimble_options" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/nimble_pool" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/phoenix" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/phoenix_ecto" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/phoenix_html" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/phoenix_live_dashboard" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/phoenix_live_view" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/phoenix_pubsub" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/phoenix_template" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/plug" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/plug_crypto" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/postgrex" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/req" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/rustler_precompiled" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/swoosh" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/table" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/table_rex" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/tailwind" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/telemetry" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/telemetry_metrics" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/telemetry_poller" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/thousand_island" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/websock" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/websock_adapter" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="phoenix [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="phoenix_ecto [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="ecto_sql [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="postgrex [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="geo_postgis [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="explorer [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="phoenix_html [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="phoenix_live_reload [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="phoenix_live_view [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="lazy_html [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="phoenix_live_dashboard [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="esbuild [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="tailwind [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="heroicons [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="daisyui [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="swoosh [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="req [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="telemetry_metrics [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="telemetry_poller [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="gettext [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="jason [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="dns_cluster [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="bandit [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="plug [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="plug_crypto [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="telemetry [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="phoenix_pubsub [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="phoenix_template [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="websock_adapter [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="phoenix_view [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="plug_cowboy [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="ex_doc [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="ecto [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="makeup_elixir [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="makeup_eex [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="makeup_syntect [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="phx_new [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="mint [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="mint_web_socket [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="decimal [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="db_connection [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="myxql [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="tds [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="makeup_sql [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="benchee [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="benchee_html [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="benchee_json [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="table [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="geo [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="poison [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="aws_signature [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="rustler_precompiled [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="table_rex [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="adbc [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="nx [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="rustler [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="bypass [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="stream_data [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="tz [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="makeup_diff [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="file_system [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="igniter [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="html_entities [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="phoenix_html_helpers [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="fine [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="elixir_make [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="cc_precompiler [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="mime [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="ecto_psql_extras [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="ecto_mysql_extras [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="ecto_sqlite3_extras [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="circular_buffer [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="floki [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="ecto_sqlite3 [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="dart_sass [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="idna [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="hackney [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="finch [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="mail [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="gen_smtp [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="mua [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="cowboy [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="multipart [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="ex_aws [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="nimble_csv [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="brotli [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="dialyxir [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="excoveralls [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="expo [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="castore [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="thousand_island [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="websock [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="hpax [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="machete [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="credo [file://C:/Projects/personal/Flockademic]" level="project" />
+    <orderEntry type="library" name="mix_test_watch [file://C:/Projects/personal/Flockademic]" level="project" />
+  </component>
+</module>

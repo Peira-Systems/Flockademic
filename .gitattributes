@@ -1,0 +1,4 @@
+# Shell scripts must stay LF even when checked out on Windows — they run on
+# Linux hosts / in Docker, and CRLF breaks the shebang.
+*.sh text eol=lf
+docker/entrypoint.sh text eol=lf

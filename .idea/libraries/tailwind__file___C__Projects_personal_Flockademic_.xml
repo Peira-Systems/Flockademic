@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="tailwind [file://C:/Projects/personal/Flockademic]" type="mix">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/tailwind/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/test/lib/tailwind/ebin" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/deps/tailwind/lib" />
+    </SOURCES>
+  </library>
+</component>

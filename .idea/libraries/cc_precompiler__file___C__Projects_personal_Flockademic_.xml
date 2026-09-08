@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="cc_precompiler [file://C:/Projects/personal/Flockademic]" type="mix">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/_build/test/lib/cc_precompiler/ebin" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/deps/cc_precompiler/lib" />
+    </SOURCES>
+  </library>
+</component>

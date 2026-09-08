@@ -1,0 +1,80 @@
+services:
+  db:
+    image: postgis/postgis:17-3.5
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required — see example.env}
+      POSTGRES_DB: ${POSTGRES_DB:-flockademic_prod}
+    # Not published to the host: the app reaches Postgres over the private
+    # compose network at `db:5432`, and publishing the port would expose the
+    # database to the internet on a public server. For local debugging /
+    # backups, bind to loopback only — never `0.0.0.0`:
+    # ports:
+    #   - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      # Bind-mounted to the host (not a named Docker volume) so the data
+      # files live outside the image/container and are directly reachable
+      # for backups. Postgres' own entrypoint takes care of permissions on
+      # first run.
+      - ${POSTGRES_DATA_DIR:-./data/postgres}:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      # postgis/postgis's first-run init (creating extensions, etc.) can
+      # outlast interval*retries on a cold volume; give it room before
+      # failures count.
+      start_period: 30s
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: ecto://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required — see example.env}@db:5432/${POSTGRES_DB:-flockademic_prod}
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE:?SECRET_KEY_BASE is required — see example.env}
+      PHX_HOST: ${DOMAIN:-localhost}
+      PORT: "4000"
+      POOL_SIZE: ${POOL_SIZE:-10}
+      CARTO_API_KEY: ${CARTO_API_KEY:-}
+      SCHEDULED_INGEST_ENABLED: ${SCHEDULED_INGEST_ENABLED:-false}
+      SCHEDULED_INGEST_INTERVAL_MS: ${SCHEDULED_INGEST_INTERVAL_MS:-86400000}
+    volumes:
+      # GeoJSON extracts for `Flockademic.Ingest.OSMExtract` — see
+      # README.md's "Ingesting camera data" for how to produce one and
+      # trigger ingestion against a file under this mount.
+      - ${CAMERA_DATA_DIR:-./data/cameras}:/data/cameras:ro
+    # Not published to the host: only reachable through the `caddy`
+    # reverse proxy below. Uncomment for direct/debug access:
+    # ports:
+    #   - "4000:4000"
+
+  caddy:
+    # Built from stock caddy + the ratelimit module (see docker/caddy/Dockerfile
+    # and the `rate_limit` directive in the Caddyfile).
+    build:
+      context: .
+      dockerfile: docker/caddy/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - app
+    environment:
+      DOMAIN: ${DOMAIN:-localhost}
+      ACME_EMAIL: ${ACME_EMAIL:-}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      # Cert storage — not app data, so a named volume (still outside the
+      # image) is fine here rather than a host bind-mount.
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

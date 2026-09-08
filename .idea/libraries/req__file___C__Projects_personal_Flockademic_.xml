@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="req [file://C:/Projects/personal/Flockademic]" type="mix">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/req/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/test/lib/req/ebin" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/deps/req/lib" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,29 @@
+{
+	email {$ACME_EMAIL}
+	# rate_limit is a non-standard directive (see docker/caddy/Dockerfile) —
+	# its order relative to the standard handlers has to be declared.
+	order rate_limit before basicauth
+}
+
+# DOMAIN=localhost (the .env default for local testing) makes Caddy issue
+# a locally-trusted certificate from its own internal CA instead of
+# requesting one from Let's Encrypt — no public domain/DNS needed to test
+# the HTTPS path. Point DOMAIN at a real, publicly-resolvable hostname
+# (with ports 80/443 reachable from the internet, for the ACME HTTP-01
+# challenge) to get a real auto-renewing Let's Encrypt certificate.
+{$DOMAIN} {
+	# Coarse per-client-IP throttle — a backstop against a single source
+	# hammering the app (e.g. the ~30 MB /api/cameras.geojson response or the
+	# /analytics spatial query), not a precise quota. Caddy is the edge, so
+	# {remote_host} is the real client IP. Needs the ratelimit module — see
+	# docker/caddy/Dockerfile.
+	rate_limit {
+		zone per_ip {
+			key {remote_host}
+			events 300
+			window 1m
+		}
+	}
+
+	reverse_proxy app:4000
+}

@@ -1,0 +1,84 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  # Match the release toolchain in the Dockerfile.
+  ELIXIR_VERSION: "1.17.3"
+  OTP_VERSION: "27.1.2"
+  MIX_ENV: test
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        # PostGIS is required — the first migration does `CREATE EXTENSION postgis`.
+        image: postgis/postgis:17-3.5
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: erlef/setup-beam@v1
+        with:
+          elixir-version: ${{ env.ELIXIR_VERSION }}
+          otp-version: ${{ env.OTP_VERSION }}
+
+      - name: Cache deps and _build
+        uses: actions/cache@v4
+        with:
+          path: |
+            deps
+            _build
+          key: ${{ runner.os }}-mix-${{ env.ELIXIR_VERSION }}-${{ env.OTP_VERSION }}-${{ hashFiles('mix.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-mix-${{ env.ELIXIR_VERSION }}-${{ env.OTP_VERSION }}-
+
+      - run: mix deps.get
+
+      - name: Check for unused deps
+        run: mix deps.unlock --check-unused
+
+      - run: mix deps.compile
+
+      - name: Compile (warnings as errors)
+        run: mix compile --warnings-as-errors
+
+      # NOTE: `mix format --check-formatted` is intentionally not run here yet —
+      # the repo isn't `mix format`-clean repo-wide (pre-existing, mostly HEEx),
+      # so it would fail on untouched files. `mix format` is in the `precommit`
+      # alias; add the check here once the tree has been formatted once.
+
+      - name: Dependency vulnerability audit
+        run: mix deps.audit
+
+      - name: Static analysis (sobelow)
+        run: mix sobelow --config --exit low
+
+      - name: Tests
+        run: mix test
+
+# Build & deploy run outside GitHub Actions. This repo is public, and the
+# image-registry / production-SSH credentials must not be exposed to a public
+# repo's workflows. Deploy manually from a trusted machine following
+# docs/deployment.md ("Manual deploy / rollback"). The self-hosted
+# `build-and-push` + `deploy` jobs were removed on 2026-09-08 when the repo
+# went public.

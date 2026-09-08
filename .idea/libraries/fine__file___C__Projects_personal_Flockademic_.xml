@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="fine [file://C:/Projects/personal/Flockademic]" type="mix">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/_build/test/lib/fine/ebin" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/deps/fine/lib" />
+    </SOURCES>
+  </library>
+</component>

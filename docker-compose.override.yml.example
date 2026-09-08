@@ -1,0 +1,15 @@
+# Local-development overrides. Copy to `docker-compose.override.yml` (which is
+# git-ignored) and `docker compose` will merge it automatically:
+#
+#     cp docker-compose.override.yml.example docker-compose.override.yml
+#
+# This publishes the Postgres port to the LOOPBACK interface only, so
+# `mix test` / `mix phx.server` on the host can reach the containerised DB.
+# It is deliberately NOT in the base docker-compose.yml — on a public server
+# the DB port must not be published at all (see docs/security-hardening.md,
+# SEC-1). Never copy this file onto a deployment host.
+
+services:
+  db:
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"

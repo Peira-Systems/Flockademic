@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="lazy_html [file://C:/Projects/personal/Flockademic]" type="mix">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/_build/test/lib/lazy_html/ebin" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/deps/lazy_html/lib" />
+      <root url="file://$PROJECT_DIR$/deps/lazy_html/c_src" />
+    </SOURCES>
+  </library>
+</component>

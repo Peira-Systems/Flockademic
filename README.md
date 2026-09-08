@@ -4,6 +4,8 @@ Visualizes the documented spread of ALPR surveillance infrastructure over
 time. See [Project.md](Project.md) for the full project brief (domain model,
 data sources, temporal-provenance rules, MVP scope).
 
+![Flockademic Screenshot](flockademic-screenshot.png)
+
 ## Stack
 
 Elixir/Phoenix/LiveView, PostgreSQL + PostGIS (via `geo_postgis`), Explorer

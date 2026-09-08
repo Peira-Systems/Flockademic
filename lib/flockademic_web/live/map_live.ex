@@ -15,7 +15,6 @@ defmodule FlockademicWeb.MapLive do
       assign(socket,
         camera_count: Cameras.count_cameras(),
         page_title: "Flockademic",
-        about_open: false,
         app_version: Application.spec(:flockademic, :vsn) |> to_string(),
         carto_api_key: Application.get_env(:flockademic, :carto_api_key),
         states: Regions.list_regions_by_type("state"),
@@ -68,14 +67,6 @@ defmodule FlockademicWeb.MapLive do
 
   def handle_event("camera:close", _params, socket) do
     {:noreply, assign(socket, selected_camera: nil)}
-  end
-
-  def handle_event("about:open", _params, socket) do
-    {:noreply, assign(socket, about_open: true)}
-  end
-
-  def handle_event("about:close", _params, socket) do
-    {:noreply, assign(socket, about_open: false)}
   end
 
   defp select_region(socket, region) do
@@ -146,7 +137,7 @@ defmodule FlockademicWeb.MapLive do
                 <div class="text-sm font-bold tracking-wide">FLOCKADEMIC</div>
                 <button
                   type="button"
-                  phx-click="about:open"
+                  phx-click={JS.show(to: "#about-popup", display: "flex")}
                   title="About"
                   aria-label="About"
                   class="btn btn-ghost btn-circle btn-xs size-4 min-h-0 p-0 text-xs font-bold opacity-60 hover:opacity-100"
@@ -220,8 +211,19 @@ defmodule FlockademicWeb.MapLive do
 
       <.camera_panel :if={@selected_camera} detail={@selected_camera} />
 
-      <div :if={@about_open} class="absolute inset-0 z-30 flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-base-content/30 backdrop-blur-sm" phx-click="about:close"></div>
+      <%!-- Purely presentational — toggled client-side with JS commands so
+      opening/closing it never round-trips to the server and can't disturb the
+      map hook (which would otherwise re-fetch the whole camera dataset). --%>
+      <div
+        id="about-popup"
+        style="display: none;"
+        class="absolute inset-0 z-30 items-center justify-center p-4"
+      >
+        <div
+          class="absolute inset-0 bg-base-content/30 backdrop-blur-sm"
+          phx-click={JS.hide(to: "#about-popup")}
+        >
+        </div>
         <div class="relative w-auto max-w-[calc(100vw-2rem)] rounded-lg bg-base-100/95 backdrop-blur px-8 py-6 shadow-lg flex flex-col items-center gap-2 text-center whitespace-nowrap">
           <div class="text-xl font-bold tracking-wide">
             Flockademic <span class="tabular-nums">v{@app_version}</span>
@@ -235,7 +237,11 @@ defmodule FlockademicWeb.MapLive do
             https://github.com/Peira-Systems/Flockademic
           </a>
           <div class="text-base font-bold">Created by Darshan Gencarelle</div>
-          <button type="button" phx-click="about:close" class="btn btn-sm btn-neutral mt-3">
+          <button
+            type="button"
+            phx-click={JS.hide(to: "#about-popup")}
+            class="btn btn-sm btn-neutral mt-3"
+          >
             Close
           </button>
         </div>

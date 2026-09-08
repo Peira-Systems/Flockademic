@@ -64,6 +64,19 @@ defmodule FlockademicWeb.MapLiveTest do
     assert html =~ "node/1@2026-01-01"
   end
 
+  test "the about popup is always in the DOM and toggled client-side", %{conn: conn} do
+    {:ok, _view, html} = live(conn, "/")
+
+    # Rendered once, hidden, and shown/hidden purely with JS commands — opening
+    # or closing it must never round-trip to the server, or the re-render makes
+    # the map hook re-fetch the whole camera dataset.
+    assert html =~ ~s(id="about-popup")
+    assert html =~ "display: none"
+    assert html =~ "Created by Darshan Gencarelle"
+    refute html =~ "about:open"
+    refute html =~ "about:close"
+  end
+
   test "closing the camera panel clears it", %{conn: conn, camera: camera} do
     {:ok, view, _html} = live(conn, "/")
     render_hook(view, "camera:clicked", %{"id" => to_string(camera.id)})
